@@ -40,7 +40,7 @@ tr:last-child td{border-bottom:none}
 <div class="count" id="count"></div>
 </div>
 <div class="tablebox"><table>
-<thead><tr><th>#</th><th>الرقم الامتحاني</th><th>اسم الطالب</th><th>المجموع</th><th>نوع القبول</th></tr></thead>
+<thead><tr><th>اسم الطالب</th><th>المجموع</th><th>نوع القبول</th></tr></thead>
 <tbody id="rows"></tbody></table></div>
 </div>
 <script>
@@ -55,10 +55,10 @@ function render(){
   DATA.forEach((r,i)=>{
     if(words.every(w=>IDX[i].includes(w))){
       n++;
-      out+='<tr><td>'+n+'</td><td class="num">'+esc(r[0])+'</td><td class="name">'+esc(r[1])+'</td><td class="num">'+esc(r[3])+'</td><td><span class="tag">'+esc(r[2])+'</span></td></tr>';
+      out+='<tr><td class="name">'+esc(r[1])+'</td><td class="num">'+esc(r[3])+'</td><td><span class="tag">'+esc(r[2])+'</span></td></tr>';
     }
   });
-  rows.innerHTML=n?out:'<tr><td colspan="5" class="empty">لا توجد نتائج</td></tr>';
+  rows.innerHTML=n?out:'<tr><td colspan="3" class="empty">لا توجد نتائج</td></tr>';
   count.textContent='عدد النتائج: '+n+' من '+DATA.length;
 }
 q.addEventListener('input',render);render();
